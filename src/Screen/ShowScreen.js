@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Context } from '../context/BlogContext';
 import { FontAwesome } from '@expo/vector-icons';
 
