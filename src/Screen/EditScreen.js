@@ -11,13 +11,10 @@ const EditScreen = ({ navigation }) => {
 
   return (
     <BlogPostForm
-      onSubmit={
-        (title, content) =>
-          editBlogPost(id, title, content, () => {
-            navigation.pop();
-          }) //navigation.pop moves us one step up in screen!
-      }
       initialValues={{ title: blogPost.title, content: blogPost.content }}
+      onSubmit={(title, content) => {
+        editBlogPost(id, title, content, () => navigation.pop());
+      }} //navigation.pop moves us one step up in screen!
     />
   );
 };

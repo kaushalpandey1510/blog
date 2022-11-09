@@ -7,7 +7,7 @@ const blogReducer = (state, action) => {
       return action.payload;
     case 'edit_blog_post':
       return state.map((blogPost) => {
-        blogPost.id === action.payload.id ? action.payload : blogPost;
+        return blogPost.id === action.payload.id ? action.payload : blogPost;
       });
     case 'delete_blog_post':
       return state.filter((blogPost) => blogPost.id !== action.payload);
@@ -43,7 +43,11 @@ const deleteBlogPost = (dispatch) => {
 const editBlogPost = (dispatch) => {
   return async (id, title, content, callback) => {
     await jsonServer.put(`/blogposts/${id}`, { title, content });
-    dispatch({ type: 'edit_blog_post', payload: { id, title, content } });
+
+    dispatch({
+      type: 'edit_blog_post',
+      payload: { title, content },
+    });
     if (callback) {
       callback();
     }
